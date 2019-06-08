@@ -1,0 +1,9 @@
+{
+  "devToolsPort": 19002,
+  "expoServerPort": 19000,
+  "packagerPort": null,
+  "packagerPid": null,
+  "expoServerNgrokUrl": "https://ci-rhw.anonymous.meettheforest.exp.direct",
+  "packagerNgrokUrl": "https://packager.ci-rhw.anonymous.meettheforest.exp.direct",
+  "ngrokPid": 48316
+}
