@@ -1,5 +1,5 @@
 MeetTheForest
-`sudo npm i -g expo-cli`
+`sudo npm i -g expo-cli --unsafe-perm`
 
 `npm i`
 
