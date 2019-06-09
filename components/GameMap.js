@@ -53,6 +53,7 @@ export default class GameMap extends Component {
         //     },
         // ],
         visitingSpots: [],
+        markers : [],
     };
 
 
@@ -111,11 +112,39 @@ export default class GameMap extends Component {
         });
     }
 
+    async renderMarkers(mapMarkers) {
+        let markers = [];
+        markers = this.state.visitingSpots.map((elem, i) => {
+            console.log('elem ', elem.color);
+            return (
+                (<Marker
+                    key={i}
+                    onPress={() => this.handleMarkerClick(i)}
+                    coordinate={{
+                        latitude: elem.latitude,
+                        longitude: elem.longitude
+                    }}
+                    pinColor={elem.color}
+                />)
+            );
+        })
+
+        this.setState({markers});
+    }
+
+    refreshMarkers() {
+        this.renderMarkers(this.props.markers).then(() => {
+            this.forceUpdate();
+        });
+    }
+    
+
     handleMarkerClick = (i) => {
         this.props.handleMarkerClick(i);
     }
 
     render() {
+        this.refreshMarkers();
         console.log('In render of map ', this.state.next_index);
         const origin = {
             latitude: 37.7908536,
@@ -146,20 +175,7 @@ export default class GameMap extends Component {
                     // image={"http://www.myiconfinder.com/uploads/iconsets/128-128-8055c322ae4049897caa15e5331940f2.png"}
                     pinColor={"blue"}
                 />
-                {this.state.visitingSpots.map((elem, i) => {
-                    console.log('elem ', elem.color);
-                    return (
-                        (<Marker
-                            key={i}
-                            onPress={() => this.handleMarkerClick(i)}
-                            coordinate={{
-                                latitude: elem.latitude,
-                                longitude: elem.longitude
-                            }}
-                            pinColor={elem.color}
-                        />)
-                    );
-                })}
+                {this.state.markers}
                 {this.state.visitingSpots.map((elem, i) => {
                     // console.log(i)
                     if (i !== 0) {
