@@ -10,7 +10,7 @@ import MapViewDirections from 'react-native-maps-directions';
 
 export default class googleMap extends Component {
     state = {
-        nearestVicinityLimit = 50 // set by the owner
+        nearestVicinityLimit = 50, // set by the owner
         myLocation: {},
         errorMessage: null,
         visitingSpots: [
@@ -102,88 +102,90 @@ export default class googleMap extends Component {
 
     }
 
-    var rad = function (x) {
-    return x * Math.PI / 180;
-};
-
-var getDistance = function (p1, p2) {
-    var R = 6378137; // Earth’s mean radius in meter
-    var dLat = rad(p2.lat() - p1.lat());
-    var dLong = rad(p2.lng() - p1.lng());
-    var a = Math.sin(dLat / 2) * Math.sin(dLat / 2) +
-        Math.cos(rad(p1.lat())) * Math.cos(rad(p2.lat())) *
-        Math.sin(dLong / 2) * Math.sin(dLong / 2);
-    var c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1 - a));
-    var d = R * c;
-    return d; // returns the distance in meter
-};
-
-render(){
-    const origin = {
-        latitude: 37.7908536,
-        longitude: -122.3967217
-    }
-    const destination = {
-        latitude: 37.7894639,
-        longitude: -122.3966408
+    rad = function (x) {
+        return x * Math.PI / 180;
     };
-    const GOOGLE_MAPS_APIKEY = 'AIzaSyA0jXWoTrtAZdxqheNqepk5Aw7UbO8q54o';
-    const mode = "WALKING"
-    return (
-        <MapView
-            style={{ flex: 1 }}
-            provider={PROVIDER_GOOGLE}
-            initialRegion={{
-                latitude: this.state.myLocation.latitude,
-                longitude: this.state.myLocation.longitude,
-                latitudeDelta: 0.0922,
-                longitudeDelta: 0.0421,
-            }}
-        >
-            <Marker
-                coordinate={{
+
+    getDistance = function (p1, p2) {
+        var R = 6378137; // Earth’s mean radius in meter
+        var dLat = rad(p2.lat() - p1.lat());
+        var dLong = rad(p2.lng() - p1.lng());
+        var a = Math.sin(dLat / 2) * Math.sin(dLat / 2) +
+            Math.cos(rad(p1.lat())) * Math.cos(rad(p2.lat())) *
+            Math.sin(dLong / 2) * Math.sin(dLong / 2);
+        var c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1 - a));
+        var d = R * c;
+        return d; // returns the distance in meter
+    };
+
+
+
+    render() {
+        const origin = {
+            latitude: 37.7908536,
+            longitude: -122.3967217
+        }
+        const destination = {
+            latitude: 37.7894639,
+            longitude: -122.3966408
+        };
+        const GOOGLE_MAPS_APIKEY = 'AIzaSyA0jXWoTrtAZdxqheNqepk5Aw7UbO8q54o';
+        const mode = "WALKING"
+        return (
+            <MapView
+                style={{ flex: 1 }}
+                provider={PROVIDER_GOOGLE}
+                initialRegion={{
                     latitude: this.state.myLocation.latitude,
-                    longitude: this.state.myLocation.longitude
+                    longitude: this.state.myLocation.longitude,
+                    latitudeDelta: 0.0922,
+                    longitudeDelta: 0.0421,
                 }}
-                // image={"http://www.myiconfinder.com/uploads/iconsets/128-128-8055c322ae4049897caa15e5331940f2.png"}
-                pinColor={"blue"}
-            />
-            {this.state.visitingSpots.map((elem, i) => {
-                return (
-                    (<Marker
-                        key={i}
-                        // onClick={this.props.handleMarkerClick}
-                        onClick={() => this.props.handleMarkerClick(i)}
-                        coordinate={{
-                            latitude: elem.latitude,
-                            longitude: elem.longitude
-                        }}
-                    />)
-                );
-            })}
-            {this.state.visitingSpots.map((elem, i) => {
-                // console.log(i)
-                if (i !== 0) {
+            >
+                <Marker
+                    coordinate={{
+                        latitude: this.state.myLocation.latitude,
+                        longitude: this.state.myLocation.longitude
+                    }}
+                    // image={"http://www.myiconfinder.com/uploads/iconsets/128-128-8055c322ae4049897caa15e5331940f2.png"}
+                    pinColor={"blue"}
+                />
+                {this.state.visitingSpots.map((elem, i) => {
                     return (
-                        (<MapViewDirections
+                        (<Marker
                             key={i}
-                            origin={{
-                                latitude: this.state.visitingSpots[i - 1].latitude,
-                                longitude: this.state.visitingSpots[i - 1].longitude
-                            }}
-                            destination={{
+                            // onClick={this.props.handleMarkerClick}
+                            onClick={() => this.props.handleMarkerClick(i)}
+                            coordinate={{
                                 latitude: elem.latitude,
                                 longitude: elem.longitude
                             }}
-                            apikey={GOOGLE_MAPS_APIKEY}
-                            mode={mode}
-                            strokeWidth={5}
-                            strokeColor="red"
                         />)
                     );
-                }
-            })}
-            {/* <MapViewDirections
+                })}
+                {this.state.visitingSpots.map((elem, i) => {
+                    // console.log(i)
+                    if (i !== 0) {
+                        return (
+                            (<MapViewDirections
+                                key={i}
+                                origin={{
+                                    latitude: this.state.visitingSpots[i - 1].latitude,
+                                    longitude: this.state.visitingSpots[i - 1].longitude
+                                }}
+                                destination={{
+                                    latitude: elem.latitude,
+                                    longitude: elem.longitude
+                                }}
+                                apikey={GOOGLE_MAPS_APIKEY}
+                                mode={mode}
+                                strokeWidth={5}
+                                strokeColor="red"
+                            />)
+                        );
+                    }
+                })}
+                {/* <MapViewDirections
                 origin={origin}
                 destination={destination}
                 apikey={GOOGLE_MAPS_APIKEY}
@@ -191,7 +193,7 @@ render(){
                 strokeWidth={5}
                 strokeColor="red"
             /> */}
-            {/* <Polyline
+                {/* <Polyline
                 coordinates={this.state.visitingSpots}
                 strokeColor="red" // fallback for when `strokeColors` is not supported by the map-provider
                 strokeColors={[
@@ -204,7 +206,7 @@ render(){
                 ]}
                 strokeWidth={6}
             /> */}
-        </MapView>
-    )
-}
+            </MapView>
+        )
+    }
 }
