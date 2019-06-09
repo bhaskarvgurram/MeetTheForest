@@ -60,13 +60,13 @@ export var visitingSpots = [
         longitude: -119.6002049,
         completed: false,
         alerts: [""],
-        info_messages: ["Swinging Bridg is a popular destination for swimming, with an excellent view of Yosemite Falls", "Beware of the bears", "The area on both sides of the bridge has mostly shallow water with a few areas of 6 feet (1.8 m) to 12 feet (3.7 m) in depth."],
+        info_messages: ["Swinging Bridge is a popular destination for swimming, with an excellent view of Yosemite Falls", "Beware of the bears", "The area on both sides of the bridge has mostly shallow water with a few areas of 6 feet (1.8 m) to 12 feet (3.7 m) in depth."],
         game_messages: [{
-            question: "How many water falls do you see from the bridge?",
-            answer: "2"
-        }, {
-            question: "Which direction does the water of the river flow?",
-            answer: "South",
+            question: "Near the bridge there is a tall tree with a board, whats on the board?",
+            option1: "Name of its planter",
+            option2: "Name of the tree",
+            option3: "Name of the department chief",
+            answer: "Name of its planter"
         }],
         docusign_messages: [{
             title: "Roadless Area Protection",
@@ -99,11 +99,11 @@ export var visitingSpots = [
         alerts: ["Waterfalls are beautiful", "Beware of the bears"],
         info_messages: ["Yosemite Conservation Heritage Center was built in 1974 to connect the east yosemite to west yosemite"],
         game_messages: [{
-            question: "W?",
-            answer: "2"
-        }, {
-            question: "Which direction does the water of the river flow?",
-            answer: "South",
+            question: "How many apple trees can you find in the componund of the Chapel",
+            option1: "3",
+            option2: "10",
+            option3: "5",
+            answer: "5"
         }],
         docusign_messages: []
 
@@ -116,11 +116,11 @@ export var visitingSpots = [
         alerts: ["Waterfalls are beautiful", "Beware of the bears"],
         info_messages: ["Half Dome Village was built in 1974 to connect the east yosemite to west yosemite"],
         game_messages: [{
-            question: "How many water falls do you see from the bridge?",
-            answer: "2"
-        }, {
-            question: "Which direction does the water of the river flow?",
-            answer: "South",
+            question: "How many apple trees can you find in the componund of the Chapel",
+            option1: "3",
+            option2: "10",
+            option3: "5",
+            answer: "5"
         }],
         docusign_messages: []
 
@@ -133,13 +133,16 @@ export var visitingSpots = [
         alerts: ["Waterfalls are beautiful", "Beware of the bears"],
         info_messages: ["Ansel Adams Gallery was built in 1974 to connect the east yosemite to west yosemite"],
         game_messages: [{
-            question: "How many water falls do you see from the bridge?",
-            answer: "2"
-        }, {
-            question: "Which direction does the water of the river flow?",
-            answer: "South",
+            question: "How many apple trees can you find in the componund of the Chapel",
+            option1: "3",
+            option2: "10",
+            option3: "5",
+            answer: "5"
         }],
-        docusign_messages: []
+        docusign_messages: [{
+            title: "Roadless Area Protection",
+            message: "Vast regions of my lands are under threat from the subversion of the Roadless Areas Protection Act by the current law makers. You can help me further by signing this petition."
+        }]
 
     },
 ]
