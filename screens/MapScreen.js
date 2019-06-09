@@ -64,6 +64,10 @@ export class MapScreen extends React.Component {
         }
     }
 
+    handleMarkerClick = () => {
+        this.goToNextLocation();
+    }
+
     goToNextLocation = () => {
         // go to the next location by setting the current challenge index
         // set completed to true for current chllenge location index in array
@@ -133,7 +137,7 @@ export class MapScreen extends React.Component {
                                 flex: 9,
                                 backgroundColor: 'powderblue'
                             }}>
-                                <Map visitingSpots={this.state.track} next_index={this.state.current_challenge_index} />
+                                <GameMap visitingSpots={this.state.track} next_index={this.state.current_challenge_index} handleMarkerClick={() => { this.handleMarkerClick }} />
                             </View>
                         </View>
 
