@@ -1,0 +1,26 @@
+{
+    "logs": [
+        {
+            "outputFile": "/Users/bhaskargurram/ViroSample/android/app/build/intermediates/incremental/mergeGvrDebugResources/merged.dir/values-v19/values-v19.xml",
+            "map": [
+                {
+                    "source": "/Users/bhaskargurram/.gradle/caches/transforms-1/files-1.1/sdk-common-1.180.0.aar/d79d3a17b7c150fb0905bcacd793ab40/res/values-v19/values.xml",
+                    "from": {
+                        "startLines": "4",
+                        "startColumns": "0",
+                        "startOffsets": "148",
+                        "endColumns": "56",
+                        "endOffsets": "204"
+                    },
+                    "to": {
+                        "startLines": "2",
+                        "startColumns": "4",
+                        "startOffsets": "55",
+                        "endColumns": "60",
+                        "endOffsets": "111"
+                    }
+                }
+            ]
+        }
+    ]
+}

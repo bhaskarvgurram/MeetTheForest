@@ -1,0 +1,19 @@
+{
+    "logs": [
+        {
+            "outputFile": "/Users/bhaskargurram/ViroSample/android/app/build/intermediates/incremental/mergeGvrDebugResources/merged.dir/values-w820dp-v13/values-w820dp-v13.xml",
+            "map": [
+                {
+                    "source": "/Users/bhaskargurram/.gradle/caches/transforms-1/files-1.1/viro_renderer-release.aar/0b7a622a4d7ec354f6d7de4c55766138/res/values-w820dp-v13/values-w820dp-v13.xml",
+                    "from": {
+                        "startLines": "2",
+                        "startColumns": "4",
+                        "startOffsets": "55",
+                        "endColumns": "57",
+                        "endOffsets": "108"
+                    }
+                }
+            ]
+        }
+    ]
+}
