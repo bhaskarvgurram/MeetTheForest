@@ -1,9 +1,9 @@
 {
-  "expoServerPort": 19000,
-  "expoServerNgrokUrl": "https://2z-m7g.anonymous.meettheforest.exp.direct",
-  "packagerNgrokUrl": "https://packager.2z-m7g.anonymous.meettheforest.exp.direct",
-  "ngrokPid": 4982,
+  "expoServerPort": null,
+  "expoServerNgrokUrl": null,
+  "packagerNgrokUrl": null,
+  "ngrokPid": null,
   "devToolsPort": 19002,
-  "packagerPort": 19004,
-  "packagerPid": 4957
+  "packagerPort": null,
+  "packagerPid": null
 }
