@@ -17,7 +17,7 @@ export class HomeScreen extends React.Component {
   navigateToForestProfile = (_id) => {
     console.log('Navigate to forest profile ...... -----', _id)
     console.log('pROPS ', this.props);
-    this.props.navigation.navigate('ForestProfile');
+    this.props.navigation.navigate('Summary');
   }
   render = () => {
     return (

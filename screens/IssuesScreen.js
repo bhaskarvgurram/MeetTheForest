@@ -10,6 +10,7 @@ import {
     Text,
     TouchableOpacity,
     View,
+    WebView
 } from 'react-native';
 import { Card, ListItem, Button, Icon, Divider, Header, CheckBox, FlatList } from 'react-native-elements'
 
@@ -18,14 +19,33 @@ export class IssuesScreen extends React.Component {
     navigationOptions = {
         header: null,
     };
+    state = {
+        webview: false
+    }
+    handleOpen = () => {
+        this.setState({
+            webview: true
+        });
+    }
+    handleClose = () => {
+        this.setState({
+            webview: false
+        });
+    }
 
     handleEndTrip = () => {
         this.props.navigation.navigate('Home');
     }
     render = () => {
 
-
+        const { webview } = this.state
         return (
+            webview ? 
+            <View style={styles.webViewContainer}>
+            <Button onPress={this.handleClose} title="Close" style={styles.button} />
+            <WebView source={{ uri: 'http://10.3.17.65:3000/signIssue' }}
+            />
+        </View>:
             <View style={[styles.container]} >
                 <View style={{
                     flex: 10
@@ -46,13 +66,13 @@ export class IssuesScreen extends React.Component {
                             </Text>
                             <Divider style={{ backgroundColor: '#72bcd4' }} />
                             <Text style={{ marginTop: 10, marginBottom: 10, textAlign: 'center' }}>
-                                Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
-                                </Text>
+                                As an American, you own 618 million acres of wild public lands, including our national parks and forests, wildlife refuges and federally managed desert and prairie lands. Many of these wildlands are at risk from poor management decisions that favor development over conservation. We all have a stake in seeing these lands conserved.
+                            </Text>
                             <Divider style={{ backgroundColor: '#72bcd4' }} />
                             <Card
-                                title='Issue 1'>
+                                title='Land and Water Conservation'>
                                 <Text style={{ marginBottom: 10 }}>
-                                    Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex...
+                                    We advocate for the protection of public lands and waters, including by working with lawmakers to give these places special status as wilderness or national monuments, fighting against development in sensitive areas ...
                                 </Text>
                                 <Text style={{ marginBottom: 10 ,fontSize:18}}>
                                     Supporters : 1,287
@@ -61,12 +81,13 @@ export class IssuesScreen extends React.Component {
                                     icon={<Icon name='code' color='#ffffff' />}
                                     backgroundColor='#03A9F4'
                                     buttonStyle={{ borderRadius: 0, marginLeft: 0, marginRight: 0, marginBottom: 0 }}
-                                    title=' Support' />
+                                    title=' Support'
+                                    onPress={this.handleOpen} />
                             </Card>
                             <Card
-                                title='Issue 2'>
+                                title='People And Nature'>
                                 <Text style={{ marginBottom: 10 }}>
-                                    Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation...
+                                    We are working on programs that break down barriers to accessing and enjoying public lands, including asking elected officials to create policies and programs that make it easier for everyone ...
                                 </Text>
                                 <Text style={{ marginBottom: 10 ,fontSize:18}}>
                                     Supporters : 2,463
@@ -75,7 +96,8 @@ export class IssuesScreen extends React.Component {
                                     icon={<Icon name='code' color='#ffffff' />}
                                     backgroundColor='#03A9F4'
                                     buttonStyle={{ borderRadius: 0, marginLeft: 0, marginRight: 0, marginBottom: 0 }}
-                                    title=' Support' />
+                                    title=' Support' 
+                                    onPress={this.handleOpen}/>
                             </Card>
 
                         </View>
