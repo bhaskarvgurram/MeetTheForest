@@ -1,5 +1,5 @@
 import React from "react";
-import {View,StyleSheet} from "react-native"
+import { View, StyleSheet } from "react-native"
 import MapView from "react-native-maps"
 
 const googleMap = props => {
@@ -11,13 +11,13 @@ const googleMap = props => {
 }
 
 const styles = StyleSheet.create({
-    mapContainer : {
-        width : '100%',
-        heigth : 200
+    mapContainer: {
+        width: '100%',
+        height: 200
     },
-    map : {
-        width : "100%",
-        heigth : "100%"
+    map: {
+        width: "100%",
+        height: "100%"
     }
 })
 

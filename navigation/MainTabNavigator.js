@@ -19,8 +19,6 @@ const HomeStack = createStackNavigator({
   Map: MapScreen,
 });
 
-
-
 HomeStack.navigationOptions = {
   tabBarLabel: 'Home',
   tabBarIcon: ({ focused }) => (

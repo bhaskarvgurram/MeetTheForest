@@ -20,6 +20,7 @@ export class ForestProfileScreen extends React.Component {
     };
 
     handleStartTrip = () => {
+        console.log('handle startt trip');
         this.props.navigation.navigate('Map');
     }
 
