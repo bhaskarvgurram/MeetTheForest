@@ -10,7 +10,7 @@ import MapViewDirections from 'react-native-maps-directions';
 
 export default class googleMap extends Component {
     state = {
-        nearestVicinityLimit = 50, // set by the owner
+        nearestVicinityLimit : 50, // set by the owner
         myLocation: {},
         errorMessage: null,
         visitingSpots : [
@@ -65,7 +65,7 @@ export default class googleMap extends Component {
             lat = location.coords.latitude
             long = location.coords.longitude
         }
-        Location.watchPositionAsync({distanceInterval:100}, userLocationChanged)
+        Location.watchPositionAsync({distanceInterval:100}, this.userLocationChanged)
         this.setState({ 
             myLocation : {
                 latitude : lat,
@@ -84,7 +84,7 @@ export default class googleMap extends Component {
             let minDistIndex = null
             let isMinDist = false
             for(let i=0;i<this.state.visitingSpots.length;i++){
-                let newDist = Math.abs(getDistance({newLat,newLong},{this.state.visitingSpots[i].latitude,this.state.visitingSpots[i].longitude}))
+                let newDist = Math.abs(this.getDistance({lat:newLat,lng:newLong},{lat:this.state.visitingSpots[i].latitude,lnf:this.state.visitingSpots[i].longitude}))
                 if (newDist < minDist && newDist < this.state.nearestVicinityLimit){
                     minDist = newDist
                     minDistIndex = i
@@ -102,16 +102,16 @@ export default class googleMap extends Component {
 
     }
 
-    rad = function(x) {
+    rad = (x) => {
         return x * Math.PI / 180;
     };
       
-    getDistance = function(p1, p2) {
+    getDistance = (p1, p2) => {
         var R = 6378137; // Earth’s mean radius in meter
-        var dLat = rad(p2.lat() - p1.lat());
-        var dLong = rad(p2.lng() - p1.lng());
+        var dLat = this.rad(p2.lat - p1.lat);
+        var dLong = this.rad(p2.lng - p1.lng);
         var a = Math.sin(dLat / 2) * Math.sin(dLat / 2) +
-          Math.cos(rad(p1.lat())) * Math.cos(rad(p2.lat())) *
+          Math.cos(this.rad(p1.lat)) * Math.cos(this.rad(p2.lat)) *
           Math.sin(dLong / 2) * Math.sin(dLong / 2);
         var c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1 - a));
         var d = R * c;

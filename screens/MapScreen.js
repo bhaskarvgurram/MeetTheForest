@@ -12,7 +12,7 @@ import {
 } from 'react-native';
 
 import { track, visitingSpots } from './tracks';
-import GameMap from './../components/GameMap';
+import Map from './../components/Map';
 
 export class MapScreen extends React.Component {
     state = {
