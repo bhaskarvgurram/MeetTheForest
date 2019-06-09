@@ -8,7 +8,6 @@ import { Marker, Polyline } from 'react-native-maps';
 import MapViewDirections from 'react-native-maps-directions';
 import { tsImportEqualsDeclaration } from "@babel/types";
 
-
 export default class GameMap extends Component {
     state = {
         myLocation: {},
