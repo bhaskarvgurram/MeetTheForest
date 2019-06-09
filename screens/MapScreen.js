@@ -13,6 +13,7 @@ import {
 
 import { track, visitingSpots } from './tracks';
 import Map from './../components/Map';
+import GameMap from './../components/GameMap';
 
 export class MapScreen extends React.Component {
     state = {
@@ -64,6 +65,11 @@ export class MapScreen extends React.Component {
         }
     }
 
+    handleMarkerClick = (i) => {
+        console.log('In handle marker click ');
+        this.goToNextLocation();
+    }
+
     goToNextLocation = () => {
         // go to the next location by setting the current challenge index
         // set completed to true for current chllenge location index in array
@@ -106,7 +112,7 @@ export class MapScreen extends React.Component {
     }
 
     render = () => {
-
+        // console.log('This state track ', this.state.track);
         return (
             <View style={[styles.container]} >
                 <View style={{
@@ -133,7 +139,7 @@ export class MapScreen extends React.Component {
                                 flex: 9,
                                 backgroundColor: 'powderblue'
                             }}>
-                                <Map visitingSpots={this.state.track} next_index={this.state.current_challenge_index} />
+                                <GameMap visitingSpots={this.state.track} next_index={this.state.current_challenge_index} handleMarkerClick={(i) => { this.handleMarkerClick(i) }} />
                             </View>
                         </View>
 

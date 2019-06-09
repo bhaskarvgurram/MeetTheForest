@@ -3,8 +3,8 @@ export var track = [{
     latitude: "37.7908536",
     longitude: "-122.3967217",
     completed: false,
-    alerts: ["Waterfalls are beautiful", "Beware of the bears"],
-    info_messages: ["Sentinel Beach was built in 1974 to connect the east yosemite to west yosemite"],
+    alerts: ["Beware of the bears coming to drink water off the river"],
+    info_messages: ["Sentinel Beach is on the Merced River", "Summer is the best time for getting into water"],
     game_messages: [{
         question: "How many water falls do you see from the bridge?",
         answer: "2"
@@ -25,7 +25,7 @@ export var track = [{
     longitude: "-120.3967217",
     completed: false,
     alerts: ["Cool winds are nice", "Beware of the dogs"],
-    info_messages: ["Chapel Bridge was built in 1974 to connect the east yosemite to west yosemite"],
+    info_messages: ["The Yosemite Creek Bridge is the oldest, carrying the North Road and spanning Yosemite Creek below Yosemite Falls", "Creek Bridge was built in 1922, it spans 50 feet (15 m) in a single arch of reinforced concrete faced with granite."],
     game_messages: [{
         question: "How many water falls do you see from the bridge?",
         answer: "2"
@@ -51,9 +51,8 @@ export var visitingSpots = [
         latitude: 37.7344593,
         longitude: -119.6054261,
         completed: false,
-
-        alerts: ["Waterfalls are beautiful", "Beware of the bears"],
-        info_messages: ["Sentinel Beach was built in 1974 to connect the east yosemite to west yosemite"],
+        alerts: ["Official policy does not allow visitors to jump off the bridge"],
+        info_messages: ["Sentinel Beach is on the Merced River", "Summer is the best time for getting into water"],
         game_messages: [{
             question: "How many water falls do you see from the bridge?",
             answer: "2"
@@ -75,8 +74,8 @@ export var visitingSpots = [
         latitude: 37.7368861,
         longitude: -119.6002049,
         completed: false,
-        alerts: ["Swinging beach are beautiful", "Beware of the bears"],
-        info_messages: ["Swinging Bridge was built in 1974 to connect the east yosemite to west yosemite"],
+        alerts: [""],
+        info_messages: ["Swinging Bridg is a popular destination for swimming, with an excellent view of Yosemite Falls", "Beware of the bears", "The area on both sides of the bridge has mostly shallow water with a few areas of 6 feet (1.8 m) to 12 feet (3.7 m) in depth."],
         game_messages: [{
             question: "How many water falls do you see from the bridge?",
             answer: "2"
@@ -99,7 +98,7 @@ export var visitingSpots = [
         longitude: -119.5918202,
         completed: false,
         alerts: ["Waterfalls are beautiful", "Beware of the bears"],
-        info_messages: ["Valley Chapel was built in 1974 to connect the east yosemite to west yosemite"],
+        info_messages: ["The chapel, which is the oldest structure in Yosemite Valley, was designed by Charles Geddes", "Designed in a 'New England style' to seat 250 people"],
         game_messages: [{
             question: "How many water falls do you see from the bridge?",
             answer: "2"
