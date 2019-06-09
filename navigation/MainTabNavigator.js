@@ -3,16 +3,23 @@ import { Platform } from 'react-native';
 import {
   createStackNavigator,
   createBottomTabNavigator,
+  createAppContainer
 } from 'react-navigation';
 
 import TabBarIcon from '../components/TabBarIcon';
-import HomeScreen from '../screens/HomeScreen';
+import { HomeScreen } from '../screens/HomeScreen';
 import LinksScreen from '../screens/LinksScreen';
 import SettingsScreen from '../screens/SettingsScreen';
+import { ForestProfileScreen } from '../screens/ForestProfileScreen';
+import { MapScreen } from '../screens/MapScreen';
 
 const HomeStack = createStackNavigator({
   Home: HomeScreen,
+  ForestProfile: ForestProfileScreen,
+  Map: MapScreen,
 });
+
+
 
 HomeStack.navigationOptions = {
   tabBarLabel: 'Home',
@@ -28,36 +35,38 @@ HomeStack.navigationOptions = {
   ),
 };
 
-const LinksStack = createStackNavigator({
-  Links: LinksScreen,
-});
+export default createAppContainer(HomeStack);
 
-LinksStack.navigationOptions = {
-  tabBarLabel: 'Links',
-  tabBarIcon: ({ focused }) => (
-    <TabBarIcon
-      focused={focused}
-      name={Platform.OS === 'ios' ? 'ios-link' : 'md-link'}
-    />
-  ),
-};
+// const LinksStack = createStackNavigator({
+//   Links: LinksScreen,
+// });
 
-const SettingsStack = createStackNavigator({
-  Settings: SettingsScreen,
-});
+// LinksStack.navigationOptions = {
+//   tabBarLabel: 'Links',
+//   tabBarIcon: ({ focused }) => (
+//     <TabBarIcon
+//       focused={focused}
+//       name={Platform.OS === 'ios' ? 'ios-link' : 'md-link'}
+//     />
+//   ),
+// };
 
-SettingsStack.navigationOptions = {
-  tabBarLabel: 'Settings',
-  tabBarIcon: ({ focused }) => (
-    <TabBarIcon
-      focused={focused}
-      name={Platform.OS === 'ios' ? 'ios-options' : 'md-options'}
-    />
-  ),
-};
+// const SettingsStack = createStackNavigator({
+//   Settings: SettingsScreen,
+// });
 
-export default createBottomTabNavigator({
-  HomeStack,
-  LinksStack,
-  SettingsStack,
-});
+// SettingsStack.navigationOptions = {
+//   tabBarLabel: 'Settings',
+//   tabBarIcon: ({ focused }) => (
+//     <TabBarIcon
+//       focused={focused}
+//       name={Platform.OS === 'ios' ? 'ios-options' : 'md-options'}
+//     />
+//   ),
+// };
+
+// export default createBottomTabNavigator({
+//   HomeStack,
+//   LinksStack,
+//   SettingsStack,
+// });

@@ -12,89 +12,145 @@ import {
 
 import { MonoText } from '../components/StyledText';
 
-export default function HomeScreen() {
-  return (
-    <View style={styles.container}>
-      <ScrollView
-        style={styles.container}
-        contentContainerStyle={styles.contentContainer}>
-        <View style={styles.welcomeContainer}>
-          <Image
-            source={
-              __DEV__
-                ? require('../assets/images/robot-dev.png')
-                : require('../assets/images/robot-prod.png')
-            }
-            style={styles.welcomeImage}
-          />
-        </View>
+export class HomeScreen extends React.Component {
 
-        <View style={styles.getStartedContainer}>
-          <DevelopmentModeNotice />
-
-          <Text style={styles.getStartedText}>Get started by opening</Text>
-
-          <View
-            style={[styles.codeHighlightContainer, styles.homeScreenFilename]}>
-            <MonoText>screens/HomeScreen.js</MonoText>
+  navigateToForestProfile = (_id) => {
+    console.log('Navigate to forest profile ...... -----', _id)
+    console.log('pROPS ', this.props);
+    this.props.navigation.navigate('ForestProfile');
+  }
+  render = () => {
+    return (
+      <View style={[styles.container]} >
+        <ScrollView
+          style={styles.container}
+          contentContainerStyle={styles.contentContainer}>
+          <View style={styles.welcomeContainer}>
+            <Image
+              source={
+                __DEV__
+                  ? require('../assets/images/wilderness_society_logo.jpeg')
+                  : require('../assets/images/wilderness_society_logo.jpeg')
+              }
+              style={styles.welcomeImage}
+            />
           </View>
 
-          <Text style={styles.getStartedText}>
-            Change this text and your app will automatically reload.
-          </Text>
-        </View>
+          <View style={{
+            flex: 1,
+            flexDirection: 'column',
+            justifyContent: 'center',
+            alignItems: 'stretch',
+          }}>
+            <View style={{
+              flex: 1,
+              flexDirection: 'row',
+              margin: 15
+            }}>
+              <Text style={{ fontSize: 20 }}>Nature in California</Text>
+            </View>
 
-        <View style={styles.helpContainer}>
-          <TouchableOpacity onPress={handleHelpPress} style={styles.helpLink}>
-            <Text style={styles.helpLinkText}>
-              Help, it didn’t automatically reload!
-            </Text>
-          </TouchableOpacity>
-        </View>
-      </ScrollView>
+            <View style={{
+              flex: 1,
+              flexDirection: 'row',
+              height: 120
+            }}>
 
-      <View style={styles.tabBarInfoContainer}>
-        <Text style={styles.tabBarInfoText}>
-          This is a tab bar. You can edit it in:
-        </Text>
+              <TouchableOpacity style={[styles.locationTile]}>
 
-        <View
-          style={[styles.codeHighlightContainer, styles.navigationFilename]}>
-          <MonoText style={styles.codeHighlightText}>
-            navigation/MainTabNavigator.js
-          </MonoText>
-        </View>
-      </View>
-    </View>
-  );
+                <Image style={{ flex: 15, height: 120, width: 150 }} source={require('../assets/images/sequoia.jpg')}>
+
+                </Image>
+                <View style={{ flex: 1 }}>
+                  <Text>Sequoia National Park</Text>
+                </View>
+              </TouchableOpacity>
+
+              <TouchableOpacity onPress={() => { this.navigateToForestProfile('yosemite') }} style={[styles.locationTile]}>
+
+                <Image style={{ flex: 15, height: 120, width: 150 }} source={require('../assets/images/yosemite.jpg')}>
+
+                </Image>
+                <View style={{ flex: 1 }}>
+                  <Text>Yosemite National Park</Text>
+                </View>
+              </TouchableOpacity>
+            </View>
+
+          </View>
+
+
+          <View style={{
+            flex: 1,
+            flexDirection: 'row',
+            height: 120
+          }}>
+            <TouchableOpacity style={[styles.locationTile]}>
+
+
+              <Image style={{ flex: 15, height: 120, width: 150 }} source={require('../assets/images/tahoe.jpg')}>
+
+              </Image>
+              <View style={{ flex: 1 }}>
+                <Text>Lake Tahoe</Text>
+              </View>
+            </TouchableOpacity>
+
+            <TouchableOpacity style={[styles.locationTile]}>
+
+              <Image style={{ flex: 15, height: 120, width: 150 }} source={require('../assets/images/napavalley.jpg')}>
+
+              </Image>
+              <View style={{ flex: 1 }}>
+                <Text>Napa Valley</Text>
+              </View>
+            </TouchableOpacity>
+          </View>
+
+
+
+
+          <View style={{
+            flex: 1,
+            flexDirection: 'row',
+            height: 120
+          }}>
+
+            <TouchableOpacity style={[styles.locationTile]}>
+
+              <Image style={{ flex: 15, height: 120, width: 150 }} source={require('../assets/images/joshuatree.jpg')}>
+
+              </Image>
+              <View style={{ flex: 1 }}>
+                <Text>Joshua Tree National Park</Text>
+              </View>
+            </TouchableOpacity>
+
+            <TouchableOpacity style={[styles.locationTile]}>
+
+              <Image style={{ flex: 15, height: 120, width: 150 }} source={require('../assets/images/emerald_bay.jpeg')}>
+
+              </Image>
+              <View style={{ flex: 1 }}>
+                <Text>Emerald Bay</Text>
+              </View>
+            </TouchableOpacity>
+          </View>
+
+
+
+        </ScrollView>
+
+      </View >
+    );
+  }
 }
 
 HomeScreen.navigationOptions = {
   header: null,
 };
 
-function DevelopmentModeNotice() {
-  if (__DEV__) {
-    const learnMoreButton = (
-      <Text onPress={handleLearnMorePress} style={styles.helpLinkText}>
-        Learn more
-      </Text>
-    );
 
-    return (
-      <Text style={styles.developmentModeText}>
-        Development mode is enabled: your app will be slower but you can use
-        useful development tools. {learnMoreButton}
-      </Text>
-    );
-  } else {
-    return (
-      <Text style={styles.developmentModeText}>
-        You are not in development mode: your app will run at full speed.
-      </Text>
-    );
-  }
-}
 
 function handleLearnMorePress() {
   WebBrowser.openBrowserAsync(
@@ -109,6 +165,14 @@ function handleHelpPress() {
 }
 
 const styles = StyleSheet.create({
+
+  locationTile: {
+    flex: 1,
+    flexDirection: "column",
+    alignItems: "center",
+    padding: 5,
+    margin: 10,
+  },
   container: {
     flex: 1,
     backgroundColor: '#fff',
@@ -183,16 +247,5 @@ const styles = StyleSheet.create({
   },
   navigationFilename: {
     marginTop: 5,
-  },
-  helpContainer: {
-    marginTop: 15,
-    alignItems: 'center',
-  },
-  helpLink: {
-    paddingVertical: 15,
-  },
-  helpLinkText: {
-    fontSize: 14,
-    color: '#2e78b7',
-  },
+  }
 });
