@@ -62,7 +62,7 @@ export default class GameMap extends Component {
         let visitingSpots = props.visitingSpots.map((location_data, i) => {
 
             if (location_data.completed === true) {
-                visiting_spots_to_show.push(Object.assign({}, location_data, { color: 'darkgreen' }));
+                visiting_spots_to_show.push(Object.assign({}, location_data, { color: 'green' }));
             }
 
             if (i === props.next_index && location_data.completed !== true) {
@@ -70,7 +70,7 @@ export default class GameMap extends Component {
                 visiting_spots_to_show.push(Object.assign({}, location_data, { color: 'red' }));
             }
         });
-        console.log('props next index ', props.next_index)
+        console.log('props next index ', visiting_spots_to_show)
         this.setState({
             visitingSpots: visiting_spots_to_show,
             next_index: props.next_index
@@ -111,6 +111,10 @@ export default class GameMap extends Component {
         });
     }
 
+    handleMarkerClick = (i) => {
+        this.props.handleMarkerClick(i);
+    }
+
     render() {
         console.log('In render of map ', this.state.next_index);
         const origin = {
@@ -143,11 +147,11 @@ export default class GameMap extends Component {
                     pinColor={"blue"}
                 />
                 {this.state.visitingSpots.map((elem, i) => {
-
+                    console.log('elem ', elem.color);
                     return (
                         (<Marker
                             key={i}
-                            // onClick={this.handleMarkerClick}
+                            onPress={() => this.handleMarkerClick(i)}
                             coordinate={{
                                 latitude: elem.latitude,
                                 longitude: elem.longitude

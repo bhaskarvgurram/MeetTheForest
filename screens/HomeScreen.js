@@ -17,7 +17,7 @@ export class HomeScreen extends React.Component {
   navigateToForestProfile = (_id) => {
     console.log('Navigate to forest profile ...... -----', _id)
     console.log('pROPS ', this.props);
-    this.props.navigation.navigate('Summary');
+    this.props.navigation.navigate('ForestProfile');
   }
   render = () => {
     return (
@@ -47,7 +47,7 @@ export class HomeScreen extends React.Component {
               flexDirection: 'row',
               margin: 15
             }}>
-              <Text style={{ fontSize: 20 ,textAlign:'center'}}>Nature in California</Text>
+              <Text style={{ fontSize: 20, textAlign: 'center' }}>Nature in California</Text>
             </View>
 
             <View style={{
