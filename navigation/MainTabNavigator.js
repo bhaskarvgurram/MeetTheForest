@@ -11,12 +11,19 @@ import { HomeScreen } from '../screens/HomeScreen';
 import LinksScreen from '../screens/LinksScreen';
 import SettingsScreen from '../screens/SettingsScreen';
 import { ForestProfileScreen } from '../screens/ForestProfileScreen';
+import { ScoreSummaryScreen } from '../screens/ScoreSummaryScreen';
+import { DonationScreen } from '../screens/DonationScreen';
+import { IssuesScreen } from '../screens/IssuesScreen';
+
 import { MapScreen } from '../screens/MapScreen';
 
 const HomeStack = createStackNavigator({
   Home: HomeScreen,
   ForestProfile: ForestProfileScreen,
   Map: MapScreen,
+  Issues: IssuesScreen,
+  Donation: DonationScreen,
+  Summary: ScoreSummaryScreen,
 });
 
 HomeStack.navigationOptions = {
