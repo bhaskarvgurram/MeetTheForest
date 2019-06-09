@@ -1,9 +1,9 @@
 {
   "devToolsPort": 19002,
-  "expoServerPort": null,
-  "packagerPort": null,
-  "packagerPid": null,
-  "expoServerNgrokUrl": "https://we-mbg.anonymous.wildlife.exp.direct",
-  "packagerNgrokUrl": "https://packager.we-mbg.anonymous.wildlife.exp.direct",
-  "ngrokPid": 28089
+  "expoServerPort": 19000,
+  "packagerPort": 19003,
+  "packagerPid": 23505,
+  "expoServerNgrokUrl": "https://we-mbg.anonymous.meettheforest.exp.direct",
+  "packagerNgrokUrl": "https://packager.we-mbg.anonymous.meettheforest.exp.direct",
+  "ngrokPid": 23535
 }
