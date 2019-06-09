@@ -8,6 +8,7 @@ import {
   Text,
   TouchableOpacity,
   View,
+  Picker
 } from 'react-native';
 
 import { MonoText } from '../components/StyledText';
@@ -26,15 +27,15 @@ export class HomeScreen extends React.Component {
           style={styles.container}
           contentContainerStyle={styles.contentContainer}>
           <View style={styles.welcomeContainer}>
+
             <Image
               source={
-                __DEV__
-                  ? require('../assets/images/wilderness_society_logo.jpeg')
-                  : require('../assets/images/wilderness_society_logo.jpeg')
+                require('../assets/images/meet_logo.png')
               }
-              style={styles.welcomeImage}
+              style={styles.logoImage}
             />
           </View>
+
 
           <View style={{
             flex: 1,
@@ -42,12 +43,34 @@ export class HomeScreen extends React.Component {
             justifyContent: 'center',
             alignItems: 'stretch',
           }}>
+
+            <View style={{
+              flex: 1,
+              flexDirection: 'column',
+              marginLeft: 5
+            }}>
+              <Picker
+                selectedValue={"california"}
+                style={{ height: 50, width: 300 }}
+                onValueChange={(itemValue, itemIndex) =>
+                  console.log('Picker val changed')
+                }>
+                <Picker.Item label="California" value="california" />
+                <Picker.Item label="Alaska" value="alaska" />
+                <Picker.Item label="New York" value="newyork" />
+                <Picker.Item label="Arizona" value="arizona" />
+                <Picker.Item label="Idaho" value="idaho" />
+              </Picker>
+            </View>
+
+
             <View style={{
               flex: 1,
               flexDirection: 'row',
-              margin: 15
+              marginLeft: 15,
+              marginBottom: 5
             }}>
-              <Text style={{ fontSize: 20, textAlign: 'center' }}>Nature in California</Text>
+              <Text style={{ textAlign: 'center' }}>Nature in California</Text>
             </View>
 
             <View style={{
@@ -140,8 +163,18 @@ export class HomeScreen extends React.Component {
 
 
         </ScrollView>
-
+        <View>
+          <Image
+            source={
+              __DEV__
+                ? require('../assets/images/wilderness_logo.jpeg')
+                : require('../assets/images/wilderness_logo.jpeg')
+            }
+            style={styles.welcomeImage}
+          />
+        </View>
       </View >
+
     );
   }
 }
@@ -185,18 +218,24 @@ const styles = StyleSheet.create({
     textAlign: 'center',
   },
   contentContainer: {
-    paddingTop: 30,
+    paddingTop: 10,
   },
   welcomeContainer: {
     alignItems: 'center',
     marginTop: 10,
-    marginBottom: 20,
+    marginBottom: 10,
   },
   welcomeImage: {
-    width: 100,
-    height: 80,
+    width: 30,
+    height: 30,
     resizeMode: 'contain',
     marginTop: 3,
+    marginLeft: -10,
+  },
+  logoImage: {
+    width: 240,
+    height: 80,
+    resizeMode: 'contain',
     marginLeft: -10,
   },
   getStartedContainer: {

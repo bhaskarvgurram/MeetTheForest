@@ -46,6 +46,7 @@ export class ForestProfileScreen extends React.Component {
         //     t.speak('Hello Vinit, I am one of the most beautiful places to visit');
         // });
     }
+
     changeGameChecked = () => {
         this.setState({
             gameChecked: !this.state.gameChecked
@@ -55,7 +56,7 @@ export class ForestProfileScreen extends React.Component {
         console.log('Navigate to Issues profile ...... -----', _id)
         console.log('pROPS ', this.props);
         this.props.navigation.navigate('Issues');
-      }
+    }
 
     render = () => {
 
@@ -64,9 +65,11 @@ export class ForestProfileScreen extends React.Component {
             <View style={[styles.container]} >
                 <View style={{
                     flex: 10
+
                 }}>
 
                     <ScrollView
+                        showsHorizontalScrollIndicator={false}
                     // style={styles.container}
                     >
 
@@ -137,7 +140,7 @@ export class ForestProfileScreen extends React.Component {
                                     <Button
                                         title="Issues"
                                         type="clear"
-                                        onPress ={()=>{
+                                        onPress={() => {
                                             this.navigateToIssuesScreen()
                                         }}
                                     />
