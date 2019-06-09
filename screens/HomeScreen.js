@@ -35,7 +35,7 @@ export class HomeScreen extends React.Component {
               style={styles.welcomeImage}
             />
           </View>
-
+          
           <View style={{
             flex: 1,
             flexDirection: 'column',
@@ -47,7 +47,7 @@ export class HomeScreen extends React.Component {
               flexDirection: 'row',
               margin: 15
             }}>
-              <Text style={{ fontSize: 20 ,textAlign:'center'}}>Nature in California</Text>
+              <Text style={{ fontSize: 20, textAlign: 'center' }}>Nature in California</Text>
             </View>
 
             <View style={{
