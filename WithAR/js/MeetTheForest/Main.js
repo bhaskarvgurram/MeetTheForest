@@ -44,14 +44,14 @@ class Main extends Component {
     }
     render() {
         const { webview } = this.state
-        const { location_data, handleExit } = this.props;
+        const { location_data, handleExit, source } = this.props;
         return (
             <>
                 {
                     webview ?
                         <View style={styles.webViewContainer}>
                             <Button onPress={this.handleClose} title="Close" style={styles.button} />
-                            <WebView source={{ uri: 'http://10.3.17.65:3000/signIssue' }}
+                            <WebView source={{ uri: 'http://10.0.0.85:3000/signIssue' }}
                             />
                         </View> :
                         <ViroARSceneNavigator {...this.props.sharedProps}
@@ -77,15 +77,9 @@ class InitialARScene extends Component {
             activeMessage: 0,
             cautions: location_data.alerts,
             activeCaution: 0,
-            docusignInfo: location_data.docusign_messages[0].message,
-            quiz: {
-                question: "Which number is the best?",
-                option1: "option1",
-                option2: "option2",
-                option3: "option3",
-                answer: "option1"
-            },
-            points: 0,
+            docusignInfo: location_data.docusign_messages[0] ? location_data.docusign_messages[0].message : "Help save forest",
+            quiz: location_data.game_messages[0] ? location_data.game_messages[0] : {},
+            points: null,
             object: true
         }
     }
@@ -147,22 +141,22 @@ class InitialARScene extends Component {
         if (cautions.length > 0)
             return (
                 <>
-                    <Info text={cautions[activeCaution]} position={[5, 1, -10]}
-                        rotation={[0, -30, 0]} customStyles={styles.infoContainer} title="Alert"/>
+                    <Info text={cautions[activeCaution]} position={[-5, 1, 10]}
+                        rotation={[0, -210, 0]} customStyles={styles.alertContainer} title="Alert" />
                     {
                         cautions.length > 1 ?
                             <>
                                 {
                                     activeCaution > 0 ?
                                         <ViroNode onClick={() => this.handlePreviousCaution()}>
-                                            <ARButton position={[3.2, -1.2, -11]} rotation={[0, -30, 0]} text="Previous" height={0.5} width={1} />
+                                            <ARButton position={[-3.2, -1.2, 11]} rotation={[0, -210, 0]} text="Previous" height={0.5} width={1} />
 
                                         </ViroNode> : null
                                 }
                                 {
                                     activeCaution !== cautions.length - 1 ?
                                         <ViroNode onClick={() => this.handleNextCaution()}>
-                                            <ARButton position={[7.5, -1.1, -10]} Ï rotation={[0, -30, 0]} text="Next" height={0.5} width={1} />
+                                            <ARButton position={[-7.5, -1.1, 10]} Ï rotation={[0, -210, 0]} text="Next" height={0.5} width={1} />
                                         </ViroNode> : null
                                 }
 
@@ -179,7 +173,7 @@ class InitialARScene extends Component {
             return (
                 <>
                     <Info text={messages[activeMessage]} position={[-5, 1, -10]}
-                        rotation={[0, 30, 0]} title="Info"/>
+                        rotation={[0, 30, 0]} title="Info" customStyles={styles.infoContainer}/>
                     {
                         messages.length > 1 ?
                             <>
@@ -212,7 +206,7 @@ class InitialARScene extends Component {
             return (
                 <>
                     <Info text={docusignInfo} position={[5, 1, 10]}
-                        rotation={[0, -150, 0]} title="Docusign" />
+                        rotation={[0, -150, 0]} title="Petition" />
 
                     <ViroNode onClick={() => this.handleAccept()}>
                         <ARButton position={[3, -1.2, 10]} rotation={[0, -150, 0]} text="Accept" height={0.5} width={1} />
@@ -228,7 +222,7 @@ class InitialARScene extends Component {
         const { quiz } = this.state;
         let points = 0;
         console.log(selected, selected === quiz["answer"])
-        if(selected === quiz["answer"]) {
+        if (selected === quiz["answer"]) {
             points = 1;
         }
         this.setState({
@@ -238,28 +232,30 @@ class InitialARScene extends Component {
     }
 
     getQuizInfo = () => {
-        const { quiz } = this.state;
+        const { quiz, points } = this.state;
         if (quiz) {
             return (
                 <>
-                    <Info text={quiz.question} position={[-5, 1, 10]}
-                        rotation={[0, -210, 0]} title="Quiz"/>
+                    <Info text={quiz.question} position={[5, 1, -10]}
+                        rotation={[0, -30, 0]} title="Game" />
 
                     <ViroNode onClick={() => this.handleAnswer(quiz["option1"])}>
-                        <ARButton position={[-3.2, -1.2, 10]} rotation={[0, -210, 0]} text={quiz["option1"]} height={0.5} width={1.5} />
+                        <ARButton position={[3.2, -1.2, -10]} rotation={[0, -30, 0]} text={quiz["option1"]} height={0.5} width={1.5} />
 
                     </ViroNode>
                     <ViroNode onClick={() => this.handleAnswer(quiz["option2"])}>
-                        <ARButton position={[-4.5, -1.2, 8.8]} rotation={[0, -210, 0]} text={quiz["option2"]} height={0.5} width={1.5} />
+                        <ARButton position={[4.5, -1.2, -8.8]} rotation={[0, -30, 0]} text={quiz["option2"]} height={0.5} width={1.5} />
 
                     </ViroNode>
                     <ViroNode onClick={() => this.handleAnswer(quiz["option3"])}>
-                        <ARButton position={[-6.5, -1.3, 8.8]} rotation={[0, -210, 0]} text={quiz["option3"]} height={0.5} width={1.5} />
+                        <ARButton position={[6.5, -1.3, -8.8]} rotation={[0, -30, 0]} text={quiz["option3"]} height={0.5} width={1.5} />
 
                     </ViroNode>
 
                 </>
             )
+        } else {
+            return  <ViroText position={[4.5, -1.2, -8.8]} rotation={[0, -30, 0]} text={points !== null && points === 1 ? "Correct" : "Incorrect"} width={3} height={3}/>
         }
     }
 
@@ -300,7 +296,8 @@ class InitialARScene extends Component {
     }
     render() {
         return (
-            <ViroARScene onTrackingUpdated={this._onInitialized}>
+            <ViroARScene >
+                <Viro360Image source={this.props.sceneNavigator.viroAppProps.location_data.image} />
                 {this.getMessages()}
                 {this.getCautionMessages()}
                 {this.getDocusignInfo()}
@@ -323,9 +320,13 @@ class InitialARScene extends Component {
 }
 
 var styles = StyleSheet.create({
-    infoContainer: {
+    alertContainer: {
         backgroundColor: "#F44336dd"
     },
+    infoContainer: {
+        backgroundColor: "#FFDE03dd"
+    },
+
     webViewContainer: {
         flex: 2,
         flexDirection: "column"

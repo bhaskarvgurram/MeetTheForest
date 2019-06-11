@@ -21,7 +21,7 @@ function openSigningCeremonyController(req) {
         // or environment variables.
         console.log(envir, qp)
         // Obtain an OAuth token from https://developers.hqtest.tst/oauth-token-generator
-        const accessToken = envir.ACCESS_TOKEN || qp.ACCESS_TOKEN || 'eyJ0eXAiOiJNVCIsImFsZyI6IlJTMjU2Iiwia2lkIjoiNjgxODVmZjEtNGU1MS00Y2U5LWFmMWMtNjg5ODEyMjAzMzE3In0.AQoAAAABAAUABwCAOUDnAe3WSAgAgHlj9UTt1kgCAG7phjJnUbxFqkpzZm9m0JcVAAEAAAAYAAkAAAAFAAAAKwAAAC0AAAAvAAAAMQAAADIAAAA4AAAAMwAAADUAAAANACQAAABmMGYyN2YwZS04NTdkLTRhNzEtYTRkYS0zMmNlY2FlM2E5NzgSAAEAAAALAAAAaW50ZXJhY3RpdmUwAACjp-YB7dZINwA6GHLQoTqUSqJ9oQycQoqw.ggGOwgBGv6t14f4A5V0r7a9Y_1yN8OiFrfS6WgIMnstGjDtRlMnPovZ-F54aFxY6n_O9VyYaBct_HzlP1Ncdm19GJmXHh1AAahuxmZFXy_oMfrGjiCJstSsW8tzNVGn7PIaP9MOo21smRDfX6CRYRuupOCQRJ453UOFXpNmBxEQtdBO9OZlkodvkQ4eZeYZzVuZ0_AvSG3n9v4EMdtSBf3dqfuCe4ESaGBLA6jTMurXqNhJgyhCZlc8d88r5nQEAutpL3sDnzbqWmOu2D9rQZOBJQOiCrr_56Sum4nxkyuioBVDX1cfL7mQygJQEFyqXql8wswLVPsiMJpTV-qQ-4A';
+        const accessToken = envir.ACCESS_TOKEN || qp.ACCESS_TOKEN || 'eyJ0eXAiOiJNVCIsImFsZyI6IlJTMjU2Iiwia2lkIjoiNjgxODVmZjEtNGU1MS00Y2U5LWFmMWMtNjg5ODEyMjAzMzE3In0.AQoAAAABAAUABwAAHW8uHe7WSAgAAF2SPGDu1kgCAG7phjJnUbxFqkpzZm9m0JcVAAEAAAAYAAkAAAAFAAAAKwAAAC0AAAAvAAAAMQAAADIAAAA4AAAAMwAAADUAAAANACQAAABmMGYyN2YwZS04NTdkLTRhNzEtYTRkYS0zMmNlY2FlM2E5NzgSAAEAAAALAAAAaW50ZXJhY3RpdmUwAADwPS0d7tZINwA6GHLQoTqUSqJ9oQycQoqw.i1Lnzr2k1pdfmSKMlSBYGjJNYUh2xSdtXuwPdaRG6LwxIH3q5nmvJ-y1svbFZvctmMABeZSuMDcwsJDG9ntmMqSccZkJ4gv3jqFyQeB6k6SSczymCqfkfnyyajkqAmvmqO-3_peZENihhyCOO917d27pbRd66Z9ql_miIyggSiZdkZwNoiQAMnfXqFT-vNWIrzTSq55VCcDYcQ0__UHJRaBjIorfiAr3O92e2M9kgkziuNNIXmzvEm-47asmZRDLJToBhDQIdOjUBIHtBbb7HiGMgwf7w9iaqZzC8hEiXwntXZxT7-lZtZoR7AyC1P1Yv__oySsj7RGCuviPSsnSTQ';
 
         // Obtain your accountId from demo.docusign.com -- the account id is shown in the drop down on the
         // upper right corner of the screen by your picture or the default picture. 
@@ -127,7 +127,7 @@ function openSigningCeremonyController(req) {
                     authenticationMethod: authenticationMethod,
                     clientUserId: clientUserId,
                     recipientId: '1',
-                    returnUrl: 'http://10.3.17.65:3000/updateStatus',
+                    returnUrl: 'http://10.0.0.85:3000/updateStatus',
                     userName: signerName,
                     email: signerEmail
                 }),
@@ -173,7 +173,9 @@ app.get('/signIssue', (req, res) => {
 app.get('/updateStatus', (req, res) => {
     res.send('<body><h2>Your Petition was submitted successfully and saved.</h2><p>Press close to Exit</p></body')
 });
-app.listen(3000)
+app.listen(3000, () => {
+    console.log("listening")
+})
 // app.get('/updateStatus', (req, res) => {
 //     console.log(req.query, req.body, req.query);
 // });

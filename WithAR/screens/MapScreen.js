@@ -135,6 +135,7 @@ export class MapScreen extends React.Component {
                 {
                     !arView ?
                         <View style={[styles.container]} >
+                            <Text style={{ fontSize: 23, fontWeight: '300'}}>The Tour</Text>
                             <Text style={styles.score}> Score : {score}</Text>
                             <View style={{
                                 flex: 10
@@ -166,12 +167,23 @@ export class MapScreen extends React.Component {
 
                                 </View >
                             </View>
-                            <View style={{ flex: 1 }}>
+                            <View style={{ flex: 1, marginTop: 10 }}>
                                 <Button
                                     style={[styles.startTripButtonStyle]}
                                     onPress={this.handleARCameraClick}
-                                    color="red"
+                                    color="blue"
                                     title="AR View"
+                                />
+                              
+
+                            </View>
+                            <View style={{ flex: 1 }}>
+                              
+                                <Button 
+                                    style={[styles.startTripButtonStyle]}
+                                    onPress={() => this.props.navigation.navigate("Summary")}
+                                    color="red"
+                                    title="End Trip"
                                 />
 
                             </View>
@@ -207,9 +219,11 @@ const styles = StyleSheet.create({
     },
     score: {
         flex: 1,
+        fontSize: 18
     },
     startTripButtonStyle: {
         backgroundColor: 'red',
-
+        margin: 20,
+        flex: 1
     }
 })
